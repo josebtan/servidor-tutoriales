@@ -4,7 +4,7 @@ Web estática con los tutoriales del servidor de Minecraft (GitHub Pages).
 
 ## Páginas
 - `index.html`: índice
-- `proteccion-basica.html`, `proteccion-avanzada.html`: GriefPrevention
+- `proteccion.html`: tutorial de GriefPrevention (pestañas Básico y Avanzado)
 
 ## Datos del servidor (para futuros tutoriales)
 - Plugin de protección: GriefPrevention.
