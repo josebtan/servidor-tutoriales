@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Protecciones: básico</title><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<nav><a href="index.html">← Tutoriales</a> · <a href="proteccion-avanzada.html">Avanzado →</a></nav>
+<h1>🛡️ Protecciones: básico</h1>
+<p class="sub">Usamos GriefPrevention para que nadie te destruya ni robe tus cosas.</p>
+
+<section class="card"><h2>📖 Descripción general</h2>
+<p>Un <b>claim</b> (reclamo) es un terreno marcado como tuyo. Dentro de él, nadie más puede construir ni usar tus cosas sin tu permiso. El claim se extiende desde el fondo del mundo hasta el cielo, así que nadie puede construir encima ni debajo.</p>
+<p><b>Qué se protege:</b></p>
+<ul><li>Bloques: nadie puede romper ni colocar.</li><li>Cofres, hornos y otros contenedores.</li><li>Puertas, botones, palancas y camas.</li><li>Tus animales y aldeanos.</li><li>Marcos, pinturas y soportes de armadura.</li><li>El agua y la lava de fuera no entran a tu terreno.</li></ul>
+<div class="tip">Si no estás en un claim, tu construcción <b>no</b> está protegida.</div></section>
+
+<section class="card"><h2>💥 Explosiones</h2>
+<p>Creepers y TNT <b>no destruyen bloques sobre el nivel del mar</b>, y dentro de un claim tampoco. Pero <b>bajo el nivel del mar sí pueden</b> (cuevas y minas), así que ahí no confíes en la protección.</p>
+<svg viewBox="0 0 300 140" role="img" aria-label="Explosión sobre y bajo el nivel del mar">
+<rect width="300" height="140" fill="#9ed6f2"/><rect y="62" width="300" height="78" fill="var(--grass2)"/><rect y="62" width="300" height="6" fill="var(--grass)"/>
+<line x1="0" y1="62" x2="300" y2="62" stroke="#3b82d9" stroke-width="2" stroke-dasharray="6 4"/><text x="8" y="56" font-size="11" fill="#134">Nivel del mar</text>
+<text x="40" y="52" font-size="28">🟢</text><circle class="blast" cx="60" cy="50" r="22" fill="#ff8a00"/><text x="38" y="30" class="shield" font-size="22">🛡️</text><text x="10" y="82" class="shield" font-size="10" fill="#fff" font-weight="700">Sin daño</text>
+<text x="200" y="112" font-size="28">🟢</text><circle class="blast" cx="214" cy="110" r="24" fill="#ff3b30"/><text x="190" y="136" font-size="10" fill="#fff" font-weight="700">¡Rompe bloques!</text>
+</svg></section>
+
+<section class="card"><h2>🧱 Bloques de reclamo</h2>
+<p>El tamaño de tus claims se paga con <b>bloques de reclamo</b>. Empiezas con algunos y <b>ganas más por tiempo jugado</b>. Cada bloque equivale a un cuadrado de 1×1 del suelo (sin importar la altura).</p>
+<p>Consulta cuántos tienes con <code>/claimslist</code> o al lado del claim que marques. Si abandonas un claim, recuperas sus bloques.</p></section>
+
+<section class="card"><h2><span class="n">1</span>Tu primer cofre protege un área</h2>
+<p>Al colocar tu <b>primer cofre</b>, se crea un claim automático con el cofre en el centro (por defecto 9×9 bloques). No hace falta nada más.</p>
+<svg viewBox="0 0 300 150" role="img" aria-label="Cofre creando un claim automático">
+<rect width="300" height="150" fill="var(--grass)"/>
+<rect class="fill" x="90" y="35" width="120" height="80" fill="#ffd23f" fill-opacity=".45" stroke="#e0a800" stroke-width="3" stroke-dasharray="8 4"/>
+<text x="150" y="85" font-size="30" text-anchor="middle">📦</text>
+<text x="150" y="132" font-size="12" class="fill" text-anchor="middle" font-weight="700" fill="#000">¡Terreno protegido!</text>
+</svg>
+<div class="tip">Solo funciona con el primer claim. Si quieres agrandarlo o crear otros, necesitas la pala. Un claim automático puede eliminarse tras mucho tiempo sin conectarte.</div></section>
+
+<section class="card"><h2><span class="n">2</span>Herramientas y usos</h2>
+<p>No hay kit: la <b>pala dorada</b> se fabrica o se consigue en el juego.</p>
+<table>
+<tr><td>🥇 Pala dorada</td><td>Clic derecho en dos esquinas para crear un claim. Clic derecho en una esquina y luego en otro punto para agrandarlo. Con ella en la mano, ves los límites cercanos.</td></tr>
+<tr><td>🪵 Palo</td><td>Clic derecho en un bloque: te dice si está protegido y de quién.</td></tr>
+</table>
+<svg viewBox="0 0 300 150" role="img" aria-label="Dos esquinas para crear un claim">
+<rect width="300" height="150" fill="var(--grass)"/>
+<rect class="fill" x="50" y="35" width="200" height="85" fill="#ffd23f" fill-opacity=".45" stroke="#e0a800" stroke-width="3" stroke-dasharray="8 4"/>
+<g class="cA"><rect x="38" y="23" width="24" height="24" fill="#ffd23f" stroke="#7a5a00" stroke-width="2"/><text x="50" y="41" font-size="14" text-anchor="middle" font-weight="700">1</text></g>
+<g class="cB"><rect x="238" y="108" width="24" height="24" fill="#ffd23f" stroke="#7a5a00" stroke-width="2"/><text x="250" y="126" font-size="14" text-anchor="middle" font-weight="700">2</text></g>
+<text x="150" y="82" font-size="15" text-anchor="middle" class="fill" font-weight="700" fill="#000">🏠 Tu terreno</text></svg>
+<div class="tip">Hay un tamaño mínimo (por defecto 10×10) y no puede solaparse con el claim de otro jugador.</div></section>
+
+<section class="card"><h2><span class="n">3</span>Comandos básicos</h2>
+<table>
+<tr><td><code>/claimslist</code></td><td>Tus claims, coordenadas y bloques disponibles</td></tr>
+<tr><td><code>/trust Nombre</code></td><td>Deja a un amigo construir en tu claim</td></tr>
+<tr><td><code>/untrust Nombre</code></td><td>Le quita el permiso</td></tr>
+<tr><td><code>/trustlist</code></td><td>Quién tiene permiso</td></tr>
+<tr><td><code>/abandonclaim</code></td><td>Borra el claim donde estás (repite para confirmar)</td></tr>
+</table>
+<div class="tip">Más opciones en <a href="proteccion-avanzada.html">Protecciones: avanzado</a>.</div></section>
+</main></body></html>
