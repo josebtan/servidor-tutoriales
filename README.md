@@ -5,7 +5,7 @@ Web estática con los tutoriales del servidor de Minecraft (GitHub Pages).
 ## Páginas
 - `index.html`: índice
 - `proteccion.html`: tutorial de GriefPrevention (pestañas Básico y Avanzado)
-- `auraskills.html`: tutorial de AuraSkills (XP, estadísticas, habilidades de maná)
+- `habilidades.html`: tutorial "Habilidades y trabajos" (AuraSkills: XP, estadísticas, maná, jobs y dinero)
 
 ## Datos del servidor (para futuros tutoriales)
 - Plugin de protección: GriefPrevention.
@@ -15,3 +15,4 @@ Web estática con los tutoriales del servidor de Minecraft (GitHub Pages).
 - Bloques de reclamo: se ganan por tiempo jugado.
 - Pendiente de confirmar con los valores reales del servidor: bloques iniciales, bloques por hora, tamaño mínimo y radio del claim automático.
 - Plugin de habilidades: AuraSkills (valores por defecto usados: 5 pasivas, cada 5 niveles; maná desde nivel 7, cada 7 niveles; confirmar con la configuración real).
+- Jobs de AuraSkills: se eligen desde el menú /skills (lingote de oro). Pendiente de confirmar: límite de trabajos, tiempo de espera entre cambios, si solo se gana XP en trabajos activos, y dinero por XP.
