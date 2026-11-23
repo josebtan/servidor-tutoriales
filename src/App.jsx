@@ -1,18 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const C = window.UNITY || {}
 const IP = C.ip || ''
-
-const CHANNELS = [
-  { cat: 'INFORMACIÓN', items: [
-    { id: 'inicio', icon: '#', name: 'bienvenida', topic: 'Todo lo que necesitas para entrar a UnityCraft' },
-    { id: 'modalidades', icon: '#', name: 'modalidades', topic: 'Elige cómo quieres jugar' },
-    { id: 'tutoriales', icon: '📚', name: 'tutoriales', topic: 'Guías para empezar bien' } ] },
-  { cat: 'JUGADOR', items: [
-    { id: 'tienda', icon: '🛒', name: 'tienda', topic: 'Vista previa de la tienda' },
-    { id: 'perfil', icon: '👤', name: 'perfil', topic: 'Vista previa del panel de jugador' } ] },
-]
-const ALL = CHANNELS.flatMap(c => c.items)
 
 const MODES = [
   { ico: '🌳', t: 'Survival Global', c: '#23a559', d: 'Construye, explora y protege tu hogar. Elige un trabajo, sube habilidades y recupera tus cosas si mueres.', tags: ['Protecciones', 'Trabajos', 'Tumbas', 'Tienda'] },
@@ -21,11 +10,15 @@ const MODES = [
   { ico: '📺', t: 'TikTok LIVE', c: '#2dd4bf', d: 'Los regalos de los espectadores se convierten en mobs y efectos dentro del juego durante el directo.', tags: ['Jakemy', 'josetan'] },
   { ico: '✨', t: 'Cosméticos', c: '#b983ff', d: 'Gadgets, mascotas, efectos y objetos con modelos 3D personalizados.', tags: ['Gadgets', 'Modelos custom'] },
 ]
-const FEATS = ['🔀 Java y Bedrock', '🛡️ Terrenos protegidos', '⛏️ Trabajos y habilidades', '🪦 Tumbas', '💬 Chat conectado a Discord', '🎙️ Chat de voz']
+const FEATS = ['Java y Bedrock', 'Terrenos protegidos', 'Trabajos y habilidades', 'Tumbas', 'Chat conectado a Discord', 'Chat de voz']
 const GUIDES = [
   { href: 'proteccion.html', t: 'Protecciones', d: 'Claims, explosiones, permisos y subdivisiones. Nivel básico y avanzado.' },
   { href: 'habilidades.html', t: 'Habilidades y trabajos', d: 'XP, estadísticas, poderes de maná, trabajos y cómo ganar dinero.' },
   { href: 'tutoriales.html', t: 'Todos los tutoriales', d: 'Índice completo de guías del servidor.' },
+]
+const SOON = [
+  ['🛒', 'Tienda', 'Cosméticos, llaves y rangos.'],
+  ['👤', 'Panel de jugador', 'Cuenta, estadísticas y tops.'],
 ]
 
 function useCopy() {
@@ -37,101 +30,121 @@ function useCopy() {
   }]
 }
 
-function Msg({ name = 'UnityCraft', bot = true, time, children }) {
-  return (
-    <div className="msg">
-      <div className="av">{name[0]}</div>
-      <div className="body">
-        <div className="who"><b>{name}</b>{bot && <span className="tag">BOT</span>}<time>{time}</time></div>
-        {children}
-      </div>
-    </div>
-  )
-}
-const Embed = ({ c = '#5865f2', title, children }) => (
-  <div className="embed" style={{ '--c': c }}>{title && <h3>{title}</h3>}{children}</div>
-)
+const WAVE = 'M0 60C75 12 225 108 300 60C375 12 525 108 600 60C675 12 825 108 900 60C975 12 1125 108 1200 60V120H0Z'
 
-function Home({ ok, copy }) {
-  return (<>
-    <div className="banner"><span className="sun" /><h1>UNITYCRAFT</h1><p>Survival global, minijuegos, mazmorras y arena de oleadas. Java y Bedrock.</p></div>
-    <Msg time="Hoy"><p>¡Bienvenido! Aquí tienes cómo entrar al servidor 👇</p>
-      <Embed c="#f0b232" title="IP del servidor">
-        <div className="ip"><code>{IP || 'IP próximamente'}</code>
-          <button className="btn go" onClick={copy} disabled={!IP}>{ok ? '¡Copiada!' : 'Copiar IP'}</button></div>
-        <p className="mut">☕ Java · 🪨 Bedrock{IP && C.bedrockPort ? ` (puerto ${C.bedrockPort})` : ''}</p>
-      </Embed>
-      <Embed c="#23a559" title="Únete en 3 pasos"><ol><li>Abre Minecraft (Java o Bedrock).</li><li>Añade el servidor con la IP.</li><li>Crea tu cuenta la primera vez y entra al portal que quieras.</li></ol></Embed>
-      <Embed title="Por qué UnityCraft"><div className="chips">{FEATS.map(f => <span key={f}>{f}</span>)}</div></Embed>
-    </Msg>
-  </>)
-}
-
-const Modes = () => (
-  <div className="cards">{MODES.map(m => (
-    <Embed key={m.t} c={m.c} title={`${m.ico} ${m.t}`}><p>{m.d}</p><div className="chips">{m.tags.map(t => <span key={t}>{t}</span>)}</div></Embed>))}
-  </div>
-)
-
-const Guides = () => (
-  <div className="cards">{GUIDES.map(g => (
-    <a key={g.href} className="embed link" style={{ '--c': '#5865f2' }} href={g.href}><h3>📖 {g.t}</h3><p>{g.d}</p><b>Leer →</b></a>))}
-  </div>
-)
-
-const Preview = ({ title, items }) => (
-  <>
-    <div className="notice">🚧 Vista previa de diseño: aún no está conectada al servidor.</div>
-    <div className="cards">{items.map(([i, t, d]) => <Embed key={t} c="#4e5058" title={`${i} ${t}`}><p className="mut">{d}</p><button className="btn" disabled>Próximamente</button></Embed>)}</div>
+function Fluid() {
+  const box = useRef(null)
+  useEffect(() => {
+    const el = box.current
+    if (!el || matchMedia('(prefers-reduced-motion:reduce)').matches) return
+    el.classList.add('rand')
+    const r = (a, b) => a + Math.random() * (b - a)
+    const timers = []
+    const go = (i, first) => {
+      const W = el.clientWidth, H = el.clientHeight, w = i.offsetWidth, h = i.offsetHeight
+      const d = first ? 0 : r(6, 13)
+      i.style.transitionDuration = d + 's'
+      i.style.transform = `translate(${r(-.3 * w, W - .7 * w).toFixed(0)}px,${r(-.4 * h, H - .6 * h).toFixed(0)}px) rotate(${r(-60, 60).toFixed(0)}deg) scale(${r(.8, 1.35).toFixed(2)})`
+      timers.push(setTimeout(() => go(i, false), first ? 50 : d * 750))
+    }
+    el.querySelectorAll('i').forEach(i => go(i, true))
+    return () => timers.forEach(clearTimeout)
+  }, [])
+  return <>
+    <div className="fluid" ref={box} aria-hidden="true"><i /><i /><i /><i /><i /></div>
+    <div className="waves" aria-hidden="true">{[0, 1, 2].map(k => <svg key={k} className="wave" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d={WAVE} /></svg>)}</div>
   </>
-)
+}
+
+function useReveal() {
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal')
+    if (!('IntersectionObserver' in window)) { els.forEach(e => e.classList.add('in')); return }
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), { threshold: .08 })
+    els.forEach(e => io.observe(e))
+    return () => io.disconnect()
+  }, [])
+}
 
 export default function App() {
-  const get = () => (location.hash.replace('#/', '') || 'inicio')
-  const [id, setId] = useState(get())
-  const [nav, setNav] = useState(false)
   const [ok, copy] = useCopy()
-  useEffect(() => { const f = () => { setId(get()); setNav(false) }; addEventListener('hashchange', f); return () => removeEventListener('hashchange', f) }, [])
-  const ch = ALL.find(c => c.id === id) || ALL[0]
-  useEffect(() => { document.title = `#${ch.name} · UnityCraft` }, [ch])
+  useReveal()
+  useEffect(() => { document.title = 'UnityCraft · Servidor de Minecraft' }, [])
+  const label = ok ? '¡Copiada!' : IP ? 'Copiar IP' : 'IP próximamente'
 
-  return (
-    <div className={`app${nav ? ' open' : ''}`}>
-      <aside className="rail" aria-label="Servidores">
-        <a className="srv on" href="#/inicio" title="UnityCraft">U</a><i className="sep" />
-        {C.discord && <a className="srv" href={C.discord} target="_blank" rel="noopener" title="Discord">💬</a>}
-        {C.tiktokJakemy && <a className="srv" href={C.tiktokJakemy} target="_blank" rel="noopener" title="TikTok Jakemy">📺</a>}
-      </aside>
-      <nav className="side" aria-label="Canales">
-        <div className="sh">UnityCraft <span>⌄</span></div>
-        <div className="chs">{CHANNELS.map(g => (
-          <div key={g.cat}><div className="cat">{g.cat}</div>
-            {g.items.map(c => <a key={c.id} href={`#/${c.id}`} className={`ch${c.id === ch.id ? ' on' : ''}`}><span>{c.icon}</span>{c.name}</a>)}</div>))}
+  return (<>
+    <header className="hero">
+      <Fluid />
+      <div className="wrap">
+        <div className="topbar">
+          <div className="brand"><span className="avatar" aria-hidden="true">U</span><div><b>UnityCraft</b><small>Servidor de Minecraft</small></div></div>
+          <div className="nav">
+            <a className="dc ghost" href="tutoriales.html">Tutoriales</a>
+            {C.discord && <a className="dc" href={C.discord} target="_blank" rel="noopener">Discord</a>}
+          </div>
         </div>
-        <div className="me"><div className="av sm">?<i className="dot" /></div><div><b>Visitante</b><small>{IP ? 'Servidor en línea' : 'IP próximamente'}</small></div>
-          <button className="ib" onClick={copy} disabled={!IP} title="Copiar IP" aria-label="Copiar IP">{ok ? '✔' : '📋'}</button></div>
-      </nav>
-      <div className="scrim" onClick={() => setNav(false)} />
-      <main className="main">
-        <header className="top">
-          <button className="ib burger" onClick={() => setNav(true)} aria-label="Abrir canales">☰</button>
-          <span className="hash">{ch.icon}</span><h2>{ch.name}</h2><span className="topic">{ch.topic}</span>
-          <button className="btn go sm" onClick={copy} disabled={!IP}>{ok ? '¡Copiada!' : IP ? 'Copiar IP' : 'IP próximamente'}</button>
-        </header>
-        <div className="feed" key={ch.id}>
-          {ch.id === 'inicio' && <Home ok={ok} copy={copy} />}
-          {ch.id === 'modalidades' && <Modes />}
-          {ch.id === 'tutoriales' && <Guides />}
-          {ch.id === 'tienda' && <Preview items={[['🎁', 'Cosméticos', 'Gadgets, mascotas y efectos.'], ['🔑', 'Llaves', 'Cofres y recompensas.'], ['👑', 'Rangos', 'Ventajas para tu cuenta.']]} />}
-          {ch.id === 'perfil' && <Preview items={[['🧍', 'Tu cuenta', 'Vincula Java o Bedrock.'], ['📊', 'Estadísticas', 'Nivel, trabajo y economía.'], ['🏆', 'Tops', 'Tu lugar en los rankings.']]} />}
+        <div className="hero-body">
+          <div className="hero-text">
+            <h1>Survival global, minijuegos y mazmorras en un solo servidor</h1>
+            <p>Entra con Java o Bedrock, elige tu modalidad y empieza a jugar. Aprende lo básico con nuestras guías paso a paso.</p>
+            <ul className="facts">{FEATS.slice(0, 3).map(f => <li key={f}>{f}</li>)}</ul>
+          </div>
+          <div className="ipcard">
+            <h2>IP del servidor</h2>
+            <div className="ip"><code>{IP || 'IP próximamente'}</code><button className="btn" onClick={copy} disabled={!IP}>{label}</button></div>
+            <p className="note" style={{ color: 'var(--muted)' }}>Java · Bedrock{IP && C.bedrockPort ? ` (puerto ${C.bedrockPort})` : ''}</p>
+          </div>
         </div>
-      </main>
-      <aside className="mem" aria-label="Miembros">
-        <div className="cat">STREAMERS — 2</div>
-        {['Jakemy', 'josetan'].map(n => <div className="mb" key={n}><div className="av sm">{n[0].toUpperCase()}<i className="dot" /></div>{n}<span className="tag">LIVE</span></div>)}
-        <div className="cat">MODALIDADES — {MODES.length}</div>
-        {MODES.map(m => <div className="mb" key={m.t}><span>{m.ico}</span>{m.t}</div>)}
-      </aside>
-    </div>
-  )
+      </div>
+    </header>
+
+    <div className="wrap"><main className="grid">
+      <div>
+        <section className="reveal" id="modalidades">
+          <h2>1. Modalidades</h2>
+          <p className="sub">Elige cómo quieres jugar.</p>
+          <div className="cards">{MODES.map(m => (
+            <div className="opt" key={m.t} style={{ '--c': m.c }}>
+              <h3>{m.ico} {m.t}</h3><p>{m.d}</p>
+              <div className="chips">{m.tags.map(t => <span key={t}>{t}</span>)}</div>
+            </div>))}
+          </div>
+        </section>
+        <section className="reveal" id="tutoriales">
+          <h2>2. Tutoriales</h2>
+          <p className="sub">Guías para empezar bien.</p>
+          <div className="cards">{GUIDES.map(g => (
+            <a className="opt" key={g.href} href={g.href}><h3>📖 {g.t}</h3><p>{g.d}</p><b className="go">Leer →</b></a>))}
+          </div>
+        </section>
+        <section className="reveal">
+          <h2>3. Próximamente</h2>
+          <p className="sub">Vista previa de diseño: aún no está conectada al servidor.</p>
+          <div className="cards">{SOON.map(([i, t, d]) => <div className="opt off" key={t}><h3>{i} {t}</h3><p>{d}</p></div>)}</div>
+        </section>
+      </div>
+
+      <aside id="unirse"><div className="invoice reveal">
+        <h2>Únete en 3 pasos</h2>
+        <ol className="steps"><li>Abre Minecraft (Java o Bedrock).</li><li>Añade el servidor con la IP.</li><li>Crea tu cuenta la primera vez y entra al portal que quieras.</li></ol>
+        <button className="send btn full" onClick={copy} disabled={!IP}>{label}</button>
+        <h2>Streamers</h2>
+        <div><div className="row"><span>Jakemy</span><span>TikTok LIVE</span></div><div className="row"><span>josetan</span><span>TikTok LIVE</span></div></div>
+        {(C.discord || C.tiktokJakemy || C.tiktokJosetan) && <>
+          <h2>Comunidad</h2>
+          <div className="guides">
+            {C.discord && <a href={C.discord} target="_blank" rel="noopener">💬 Discord</a>}
+            {C.tiktokJakemy && <a href={C.tiktokJakemy} target="_blank" rel="noopener">📺 TikTok Jakemy</a>}
+            {C.tiktokJosetan && <a href={C.tiktokJosetan} target="_blank" rel="noopener">📺 TikTok josetan</a>}
+          </div></>}
+      </div></aside>
+    </main></div>
+
+    <footer><div className="wrap">
+      <nav><a href="#modalidades">Modalidades</a><a href="tutoriales.html">Tutoriales</a><a href="proteccion.html">Protecciones</a><a href="habilidades.html">Habilidades</a></nav>
+      <p>© {new Date().getFullYear()} UnityCraft.</p>
+      <p>Proyecto de fans. No afiliado a Mojang ni a Microsoft.</p>
+    </div></footer>
+    <button className="bar" onClick={copy} disabled={!IP}><span>{IP ? 'IP del servidor' : 'IP próximamente'}</span><span>{ok ? '¡Copiada!' : IP || ''}</span></button>
+  </>)
 }
