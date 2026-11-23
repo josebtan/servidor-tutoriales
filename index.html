@@ -16,6 +16,7 @@
 </head>
 <body>
 <a class="skip" href="#modalidades">Saltar al contenido</a>
+<div id="prog" aria-hidden="true"></div>
 <header><div class="wrap bar">
   <a class="logo" href="#top">UNITYCRAFT</a>
   <nav id="menu" aria-label="Principal"><ul id="menu-list">
@@ -29,11 +30,11 @@
 
 <main id="top">
 <div class="hero">
-  <div class="stars" aria-hidden="true"></div><div class="moon" aria-hidden="true"></div>
+  <div class="stars" aria-hidden="true"></div><div class="clouds" aria-hidden="true"><i></i><i></i><i></i></div><div class="fly" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="moon" aria-hidden="true"></div>
   <div class="wrap">
     <span class="badge">JAVA + BEDROCK</span>
     <h1>UNITYCRAFT</h1>
-    <p class="lead">Survival global, minijuegos, mazmorras y una arena de oleadas infinitas. Todo en un solo servidor.</p>
+    <p class="lead">Vive <span class="rot" id="rot" aria-live="off">survival global</span><span class="caret"></span><br>Todo en un solo servidor, en Java y Bedrock.</p>
     <div class="ip">
       <code data-ip>IP próximamente</code>
       <button class="btn go" data-copy>Copiar IP</button>
@@ -41,7 +42,7 @@
     <div class="plat"><span>☕ Java</span><span>🪨 Bedrock</span><span data-bedrock></span></div>
     <p id="live" class="sr" role="status" style="position:absolute;left:-999px"></p>
   </div>
-  <svg class="scene" viewBox="0 0 320 120" preserveAspectRatio="xMidYMax slice" shape-rendering="crispEdges" aria-hidden="true">
+  <svg class="scene" id="scene" viewBox="0 0 320 120" preserveAspectRatio="xMidYMax slice" shape-rendering="crispEdges" aria-hidden="true">
     <path d="M0 80h30v-8h30v-10h30v10h30v-14h40v14h40v-10h40v10h40v-6h40v40H0z" fill="#12301f"/>
     <path d="M0 96h50v-8h40v8h60v-6h50v6h120v24H0z" fill="#1c4a2a"/>
     <rect y="100" width="320" height="6" fill="#6fbf4a"/><rect y="106" width="320" height="14" fill="#6b4423"/>
@@ -53,6 +54,7 @@
   </svg>
 </div>
 
+<div class="ticker" aria-hidden="true"><div><span>⛏ SURVIVAL</span><span>🎮 MINIJUEGOS</span><span>⚔ MAZMORRAS</span><span>📺 TIKTOK LIVE</span><span>✨ COSMÉTICOS</span><span>🪦 TUMBAS</span><span>🛡 PROTECCIONES</span><span>⛏ SURVIVAL</span><span>🎮 MINIJUEGOS</span><span>⚔ MAZMORRAS</span><span>📺 TIKTOK LIVE</span><span>✨ COSMÉTICOS</span><span>🪦 TUMBAS</span><span>🛡 PROTECCIONES</span></div></div>
 <section id="modalidades"><div class="wrap">
   <h2>MODALIDADES</h2>
   <p class="sub">Elige cómo quieres jugar. Desde el lobby accedes a todo por los portales.</p>
