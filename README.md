@@ -3,7 +3,10 @@
 Web estática con los tutoriales del servidor de Minecraft (GitHub Pages).
 
 ## Páginas
-- `index.html`: índice
+- `index.html`: landing de UnityCraft (modalidades, características, tutoriales, cómo unirse)
+- `config.js`: IP, puerto Bedrock, Discord y TikTok de la landing (editar aquí)
+- `landing.css` / `landing.js`: estilos y comportamiento de la landing
+- `tutoriales.html`: índice de tutoriales
 - `proteccion.html`: tutorial de GriefPrevention (pestañas Básico y Avanzado)
 - `habilidades.html`: tutorial "Habilidades y trabajos" (AuraSkills: XP, estadísticas, maná, jobs y dinero)
 
