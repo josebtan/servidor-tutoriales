@@ -5,116 +5,292 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UnityCraft · Servidor de Minecraft Java y Bedrock</title>
 <meta name="description" content="UnityCraft: survival global, minijuegos, mazmorras y arena de oleadas, interacción con TikTok LIVE y cosméticos. Juega desde Java o Bedrock.">
-<meta name="theme-color" content="#0d1310">
+<meta name="theme-color" content="#090e0b">
 <meta property="og:title" content="UnityCraft · Servidor de Minecraft">
 <meta property="og:description" content="Survival global, minijuegos, mazmorras y mucho más. Java y Bedrock.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%238b5a2b'/%3E%3Crect width='8' height='3' fill='%236fbf4a'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
 <link rel="stylesheet" href="landing.css">
 </head>
 <body>
 <a class="skip" href="#modalidades">Saltar al contenido</a>
 <div id="prog" aria-hidden="true"></div>
-<header><div class="wrap bar">
-  <a class="logo" href="#top">UNITYCRAFT</a>
-  <nav id="menu" aria-label="Principal"><ul id="menu-list">
-    <li><a href="#modalidades">Modalidades</a></li>
-    <li><a href="#caracteristicas">Características</a></li>
-    <li><a href="#tutoriales">Tutoriales</a></li>
-    <li><a href="#unete">Únete</a></li>
-  </ul></nav>
-  <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
-</div></header>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="UnityCraft Inicio">⛏️ UNITYCRAFT</a>
+    <nav id="menu" aria-label="Principal">
+      <ul id="menu-list">
+        <li><a href="#modalidades">Modalidades</a></li>
+        <li><a href="tutoriales.html">Tutoriales</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="perfil.html">Mi Perfil</a></li>
+      </ul>
+    </nav>
+    <div class="player-hud">
+      <img class="player-avatar" src="https://mc-heads.net/avatar/MHF_Steve/32" width="26" height="26" alt="Avatar Minecraft" decoding="async">
+      <span class="player-tokens" data-user-tokens>🪙 1,250</span>
+      <button type="button" class="btn-hud" data-open-modal="modal-vincular">Vincular MC</button>
+    </div>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+  </div>
+</header>
 
 <main id="top">
-<div class="hero">
-  <div class="stars" aria-hidden="true"></div><div class="clouds" aria-hidden="true"><i></i><i></i><i></i></div><div class="fly" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="moon" aria-hidden="true"></div>
-  <div class="wrap">
-    <span class="badge">JAVA + BEDROCK</span>
-    <h1>UNITYCRAFT</h1>
-    <p class="lead">Vive <span class="rot" id="rot" aria-live="off">survival global</span><span class="caret"></span><br>Todo en un solo servidor, en Java y Bedrock.</p>
-    <div class="ip">
-      <code data-ip>IP próximamente</code>
-      <button class="btn go" data-copy>Copiar IP</button>
+  <div class="hero">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="clouds" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="fly" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="moon" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <div class="badge-row">
+        <span class="badge">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-players-online>SERVIDOR ACTIVO</span> · JAVA + BEDROCK
+        </span>
+      </div>
+      <h1>UNITYCRAFT</h1>
+      <p class="lead">
+        Vive <span class="rot" id="rot" aria-live="off">survival global</span><span class="caret"></span><br>
+        Todo en un solo servidor, en Java y Bedrock.
+      </p>
+      <div class="ip">
+        <code data-ip>play.unitycraft.net</code>
+        <button type="button" class="btn go" data-copy>📋 Copiar IP</button>
+      </div>
+      <div class="plat">
+        <span>☕ Java 1.20+</span>
+        <span>🪨 Bedrock</span>
+        <span data-bedrock></span>
+      </div>
+      <p id="live" class="sr" role="status"></p>
     </div>
-    <div class="plat"><span>☕ Java</span><span>🪨 Bedrock</span><span data-bedrock></span></div>
-    <p id="live" class="sr" role="status" style="position:absolute;left:-999px"></p>
-  </div>
-  <svg class="scene" id="scene" viewBox="0 0 320 120" preserveAspectRatio="xMidYMax slice" shape-rendering="crispEdges" aria-hidden="true">
-    <path d="M0 80h30v-8h30v-10h30v10h30v-14h40v14h40v-10h40v10h40v-6h40v40H0z" fill="#12301f"/>
-    <path d="M0 96h50v-8h40v8h60v-6h50v6h120v24H0z" fill="#1c4a2a"/>
-    <rect y="100" width="320" height="6" fill="#6fbf4a"/><rect y="106" width="320" height="14" fill="#6b4423"/>
-    <g fill="#4a2f16"><rect x="14" y="110" width="6" height="4"/><rect x="90" y="112" width="6" height="4"/><rect x="170" y="109" width="6" height="4"/><rect x="260" y="112" width="6" height="4"/></g>
-    <rect x="48" y="82" width="5" height="18" fill="#6b4423"/><rect x="38" y="68" width="25" height="9" fill="#2f7d32"/><rect x="42" y="60" width="17" height="9" fill="#3a9a3d"/><rect x="38" y="76" width="25" height="7" fill="#2f7d32"/>
-    <rect x="268" y="80" width="6" height="20" fill="#6b4423"/><rect x="256" y="62" width="30" height="10" fill="#2f7d32"/><rect x="260" y="52" width="22" height="11" fill="#3a9a3d"/><rect x="256" y="71" width="30" height="10" fill="#2f7d32"/>
-    <rect x="170" y="80" width="42" height="20" fill="#a0713f"/><path d="M164 80h54v-4h-6v-4h-6v-4h-30v4h-6v4h-6z" fill="#7a4a22"/><rect x="190" y="88" width="9" height="12" fill="#3b2410"/><rect x="176" y="86" width="8" height="7" fill="#ffd966"/><rect x="203" y="86" width="6" height="7" fill="#ffd966"/>
-    <rect x="124" y="90" width="2" height="10" fill="#8b5a2b"/><rect x="123" y="86" width="4" height="4" fill="#ffc83d"><animate attributeName="opacity" values="1;.6;1" dur="1.2s" repeatCount="indefinite"/></rect>
-  </svg>
-</div>
 
-<div class="ticker" aria-hidden="true"><div><span>⛏ SURVIVAL</span><span>🎮 MINIJUEGOS</span><span>⚔ MAZMORRAS</span><span>📺 TIKTOK LIVE</span><span>✨ COSMÉTICOS</span><span>🪦 TUMBAS</span><span>🛡 PROTECCIONES</span><span>⛏ SURVIVAL</span><span>🎮 MINIJUEGOS</span><span>⚔ MAZMORRAS</span><span>📺 TIKTOK LIVE</span><span>✨ COSMÉTICOS</span><span>🪦 TUMBAS</span><span>🛡 PROTECCIONES</span></div></div>
-<section id="modalidades"><div class="wrap">
-  <h2>MODALIDADES</h2>
-  <p class="sub">Elige cómo quieres jugar. Desde el lobby accedes a todo por los portales.</p>
-  <div class="grid g3">
-    <article class="card span2 rv" style="--ac:#6fbf4a"><div class="ico" aria-hidden="true">🌳</div><h3>SURVIVAL GLOBAL</h3>
-      <p>Construye, explora y haz crecer tu hogar. Protege tu terreno, elige un trabajo, sube habilidades y recupera tus cosas si mueres.</p>
-      <ul class="tags"><li>Protecciones</li><li>Trabajos y habilidades</li><li>Tumbas</li><li>Tienda y economía</li></ul>
-      <div class="links"><a class="btn go" href="proteccion.html">Guía de protecciones</a><a class="btn" href="habilidades.html">Habilidades y trabajos</a></div></article>
-    <article class="card rv" style="--ac:#ffc83d"><div class="ico" aria-hidden="true">🎮</div><h3>MINIJUEGOS</h3>
-      <p>Partidas rápidas desde el lobby: Arcades, PvP y Shooters, como Quake.</p>
-      <ul class="tags"><li>Arcades</li><li>PvP</li><li>Shooters</li></ul></article>
-    <article class="card rv" style="--ac:#ff5d4d"><div class="ico" aria-hidden="true">⚔️</div><h3>MAZMORRAS Y ARENA</h3>
-      <p>Mazmorras por niveles con guardias y jefes, y una arena donde resistes oleadas infinitas cada vez más duras.</p>
-      <ul class="tags"><li>Jefes</li><li>Oleadas infinitas</li></ul></article>
-    <article class="card rv" style="--ac:#4de3d0"><div class="ico" aria-hidden="true">📺</div><h3>TIKTOK LIVE</h3>
-      <p>Los regalos de los espectadores se convierten en mobs y efectos dentro del juego durante el directo.</p>
-      <ul class="tags"><li>Jakemy</li><li>josetan</li></ul>
-      <div class="links"><a class="btn" data-link="tiktokJakemy">TikTok de Jakemy</a><a class="btn" data-link="tiktokJosetan">TikTok de josetan</a></div></article>
-    <article class="card rv" style="--ac:#b983ff"><div class="ico" aria-hidden="true">✨</div><h3>COSMÉTICOS</h3>
-      <p>Gadgets, mascotas y efectos, y objetos con modelos 3D personalizados para destacar.</p>
-      <ul class="tags"><li>Gadgets</li><li>Modelos custom</li></ul></article>
+    <svg class="scene" id="scene" viewBox="0 0 320 120" preserveAspectRatio="xMidYMax slice" shape-rendering="crispEdges" aria-hidden="true">
+      <path d="M0 80h30v-8h30v-10h30v10h30v-14h40v14h40v-10h40v10h40v-6h40v40H0z" fill="#12301f"/>
+      <path d="M0 96h50v-8h40v8h60v-6h50v6h120v24H0z" fill="#1c4a2a"/>
+      <rect y="100" width="320" height="6" fill="#6fbf4a"/>
+      <rect y="106" width="320" height="14" fill="#6b4423"/>
+      <g fill="#4a2f16">
+        <rect x="14" y="110" width="6" height="4"/>
+        <rect x="90" y="112" width="6" height="4"/>
+        <rect x="170" y="109" width="6" height="4"/>
+        <rect x="260" y="112" width="6" height="4"/>
+      </g>
+      <rect x="48" y="82" width="5" height="18" fill="#6b4423"/>
+      <rect x="38" y="68" width="25" height="9" fill="#2f7d32"/>
+      <rect x="42" y="60" width="17" height="9" fill="#3a9a3d"/>
+      <rect x="38" y="76" width="25" height="7" fill="#2f7d32"/>
+      <rect x="268" y="80" width="6" height="20" fill="#6b4423"/>
+      <rect x="256" y="62" width="30" height="10" fill="#2f7d32"/>
+      <rect x="260" y="52" width="22" height="11" fill="#3a9a3d"/>
+      <rect x="256" y="71" width="30" height="10" fill="#2f7d32"/>
+      <rect x="170" y="80" width="42" height="20" fill="#a0713f"/>
+      <path d="M164 80h54v-4h-6v-4h-6v-4h-30v4h-6v4h-6z" fill="#7a4a22"/>
+      <rect x="190" y="88" width="9" height="12" fill="#3b2410"/>
+      <rect x="176" y="86" width="8" height="7" fill="#ffd966"/>
+      <rect x="203" y="86" width="6" height="7" fill="#ffd966"/>
+      <rect x="124" y="90" width="2" height="10" fill="#8b5a2b"/>
+      <rect x="123" y="86" width="4" height="4" fill="#ffc83d">
+        <animate attributeName="opacity" values="1;.6;1" dur="1.2s" repeatCount="indefinite"/>
+      </rect>
+    </svg>
   </div>
-</div></section>
 
-<section id="caracteristicas" class="alt"><div class="wrap">
-  <h2>CARACTERÍSTICAS</h2>
-  <p class="sub">Lo que hace cómodo y seguro jugar en UnityCraft.</p>
-  <div class="grid g3">
-    <div class="card rv" style="--ac:#4de3d0"><div class="ico" aria-hidden="true">🔀</div><h3>JAVA Y BEDROCK</h3><p>Entra desde el cliente que prefieras, sin cambiar de servidor.</p></div>
-    <div class="card rv" style="--ac:#6fbf4a"><div class="ico" aria-hidden="true">🛡️</div><h3>TERRENOS PROTEGIDOS</h3><p>Reclama tu zona y evita el grief. Aprende cómo en el tutorial.</p></div>
-    <div class="card rv" style="--ac:#ffc83d"><div class="ico" aria-hidden="true">⛏️</div><h3>TRABAJOS Y HABILIDADES</h3><p>Sube de nivel, desbloquea poderes y gana dinero con tu trabajo.</p></div>
-    <div class="card rv" style="--ac:#ff5d4d"><div class="ico" aria-hidden="true">🪦</div><h3>TUMBAS</h3><p>Si mueres, tus objetos quedan en una tumba para que los recuperes.</p></div>
-    <div class="card rv" style="--ac:#5865f2"><div class="ico" aria-hidden="true">💬</div><h3>DISCORD CONECTADO</h3><p>El chat del servidor se conecta con nuestro Discord.</p></div>
-    <div class="card rv" style="--ac:#b983ff"><div class="ico" aria-hidden="true">🎙️</div><h3>CHAT DE VOZ</h3><p>Habla dentro del juego con Simple Voice Chat.</p></div>
+  <div class="ticker" aria-hidden="true">
+    <div>
+      <span>⛏ SURVIVAL</span><span>🎮 MINIJUEGOS</span><span>⚔ MAZMORRAS</span><span>📺 TIKTOK LIVE</span><span>✨ COSMÉTICOS</span><span>🪦 TUMBAS</span><span>🛡 PROTECCIONES</span>
+      <span>⛏ SURVIVAL</span><span>🎮 MINIJUEGOS</span><span>⚔ MAZMORRAS</span><span>📺 TIKTOK LIVE</span><span>✨ COSMÉTICOS</span><span>🪦 TUMBAS</span><span>🛡 PROTECCIONES</span>
+    </div>
   </div>
-</div></section>
 
-<section id="tutoriales"><div class="wrap">
-  <h2>TUTORIALES</h2>
-  <p class="sub">Guías con animaciones para empezar bien.</p>
-  <div class="grid g2">
-    <a class="card rv" href="proteccion.html" style="--ac:#6fbf4a"><div class="ico" aria-hidden="true">🛡️</div><h3>PROTECCIONES</h3><p>Claims, explosiones, bloques, permisos y subdivisiones. Nivel básico y avanzado.</p><b>Leer tutorial →</b></a>
-    <a class="card rv" href="habilidades.html" style="--ac:#ffc83d"><div class="ico" aria-hidden="true">⚔️</div><h3>HABILIDADES Y TRABAJOS</h3><p>XP, estadísticas, poderes de maná, trabajos y cómo ganar dinero.</p><b>Leer tutorial →</b></a>
-  </div>
-  <p style="margin-top:24px"><a class="btn" href="tutoriales.html">Ver todos los tutoriales</a></p>
-</div></section>
+  <section id="modalidades">
+    <div class="wrap">
+      <h2>MODALIDADES</h2>
+      <p class="sub">Elige cómo quieres jugar. Desde el lobby accedes a todo por los portales.</p>
+      <div class="grid g3">
+        <article class="card span2 rv" style="--ac:#5be368">
+          <div class="ico" aria-hidden="true">🌳</div>
+          <h3>SURVIVAL GLOBAL</h3>
+          <p>Construye, explora y haz crecer tu hogar. Protege tu terreno, elige un trabajo, sube habilidades y recupera tus cosas si mueres.</p>
+          <ul class="tags">
+            <li>Protecciones</li>
+            <li>Trabajos y habilidades</li>
+            <li>Tumbas</li>
+            <li>Tienda y economía</li>
+          </ul>
+          <div class="links">
+            <a class="btn go" href="proteccion.html">🛡️ Guía de protecciones</a>
+            <a class="btn" href="habilidades.html">⚔️ Habilidades y trabajos</a>
+          </div>
+        </article>
 
-<section id="unete" class="alt"><div class="wrap">
-  <h2>ÚNETE EN 3 PASOS</h2>
-  <p class="sub">Menos de un minuto para estar dentro.</p>
-  <ol class="steps">
-    <li class="rv"><b>Abre Minecraft</b>Java o Bedrock, como prefieras.</li>
-    <li class="rv"><b>Añade el servidor</b>Copia la IP y pégala en «Añadir servidor».</li>
-    <li class="rv"><b>Regístrate y juega</b>La primera vez te pedirá crear tu cuenta. Luego entra al portal que quieras.</li>
-  </ol>
-  <div class="ip" style="margin-top:28px"><code data-ip>IP próximamente</code><button class="btn go" data-copy>Copiar IP</button><a class="btn" data-link="discord">Unirme al Discord</a></div>
-</div></section>
+        <article class="card rv" style="--ac:#ffc83d">
+          <div class="ico" aria-hidden="true">🎮</div>
+          <h3>MINIJUEGOS</h3>
+          <p>Partidas rápidas desde el lobby: Arcades, PvP y Shooters, como Quake.</p>
+          <ul class="tags">
+            <li>Arcades</li>
+            <li>PvP</li>
+            <li>Shooters</li>
+          </ul>
+        </article>
+
+        <article class="card rv" style="--ac:#ff5d4d">
+          <div class="ico" aria-hidden="true">⚔️</div>
+          <h3>MAZMORRAS Y ARENA</h3>
+          <p>Mazmorras por niveles con guardias y jefes, y una arena donde resistes oleadas infinitas cada vez más duras.</p>
+          <ul class="tags">
+            <li>Jefes</li>
+            <li>Oleadas infinitas</li>
+          </ul>
+        </article>
+
+        <article class="card rv" style="--ac:#4de3d0">
+          <div class="ico" aria-hidden="true">📺</div>
+          <h3>TIKTOK LIVE</h3>
+          <p>Los regalos de los espectadores se convierten en mobs y efectos dentro del juego durante el directo.</p>
+          <ul class="tags">
+            <li>Jakemy</li>
+            <li>josetan</li>
+          </ul>
+          <div class="links">
+            <a class="btn" data-link="tiktokJakemy">TikTok de Jakemy</a>
+            <a class="btn" data-link="tiktokJosetan">TikTok de josetan</a>
+          </div>
+        </article>
+
+        <article class="card rv" style="--ac:#b983ff">
+          <div class="ico" aria-hidden="true">✨</div>
+          <h3>COSMÉTICOS</h3>
+          <p>Gadgets, mascotas y efectos, y objetos con modelos 3D personalizados para destacar.</p>
+          <ul class="tags">
+            <li>Gadgets</li>
+            <li>Modelos custom</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="caracteristicas" class="alt">
+    <div class="wrap">
+      <h2>CARACTERÍSTICAS</h2>
+      <p class="sub">Lo que hace cómodo y seguro jugar en UnityCraft.</p>
+      <div class="grid g3">
+        <div class="card rv" style="--ac:#4de3d0">
+          <div class="ico" aria-hidden="true">🔀</div>
+          <h3>JAVA Y BEDROCK</h3>
+          <p>Entra desde el cliente que prefieras, sin cambiar de servidor.</p>
+        </div>
+        <div class="card rv" style="--ac:#5be368">
+          <div class="ico" aria-hidden="true">🛡️</div>
+          <h3>TERRENOS PROTEGIDOS</h3>
+          <p>Reclama tu zona y evita el grief. Aprende cómo en el tutorial.</p>
+        </div>
+        <div class="card rv" style="--ac:#ffc83d">
+          <div class="ico" aria-hidden="true">⛏️</div>
+          <h3>TRABAJOS Y HABILIDADES</h3>
+          <p>Sube de nivel, desbloquea poderes y gana dinero con tu trabajo.</p>
+        </div>
+        <div class="card rv" style="--ac:#ff5d4d">
+          <div class="ico" aria-hidden="true">🪦</div>
+          <h3>TUMBAS</h3>
+          <p>Si mueres, tus objetos quedan en una tumba para que los recuperes.</p>
+        </div>
+        <div class="card rv" style="--ac:#5865f2">
+          <div class="ico" aria-hidden="true">💬</div>
+          <h3>DISCORD CONECTADO</h3>
+          <p>El chat del servidor se conecta con nuestro Discord.</p>
+        </div>
+        <div class="card rv" style="--ac:#b983ff">
+          <div class="ico" aria-hidden="true">🎙️</div>
+          <h3>CHAT DE VOZ</h3>
+          <p>Habla dentro del juego con Simple Voice Chat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tutoriales">
+    <div class="wrap">
+      <h2>TUTORIALES</h2>
+      <p class="sub">Guías interactivas con animaciones para dominar el servidor desde el primer día.</p>
+      <div class="grid g2">
+        <a class="card rv" href="proteccion.html" style="--ac:#5be368">
+          <div class="ico" aria-hidden="true">🛡️</div>
+          <h3>PROTECCIONES</h3>
+          <p>Claims, explosiones, bloques, permisos y subdivisiones. Nivel básico y avanzado.</p>
+          <b>Leer tutorial →</b>
+        </a>
+        <a class="card rv" href="habilidades.html" style="--ac:#ffc83d">
+          <div class="ico" aria-hidden="true">⚔️</div>
+          <h3>HABILIDADES Y TRABAJOS</h3>
+          <p>XP, estadísticas, poderes de maná, trabajos y cómo ganar dinero.</p>
+          <b>Leer tutorial →</b>
+        </a>
+      </div>
+      <p style="margin-top:24px"><a class="btn" href="tutoriales.html">📚 Ver todos los tutoriales</a></p>
+    </div>
+  </section>
+
+  <section id="unete" class="alt">
+    <div class="wrap">
+      <h2>ÚNETE EN 3 PASOS</h2>
+      <p class="sub">Menos de un minuto para estar dentro.</p>
+      <ol class="steps">
+        <li class="rv"><b>Abre Minecraft</b>Java o Bedrock, como prefieras.</li>
+        <li class="rv"><b>Añade el servidor</b>Copia la IP y pégala en «Añadir servidor».</li>
+        <li class="rv"><b>Regístrate y juega</b>La primera vez te pedirá crear tu cuenta. Luego entra al portal que quieras.</li>
+      </ol>
+      <div class="ip" style="margin-top:28px">
+        <code data-ip>play.unitycraft.net</code>
+        <button type="button" class="btn go" data-copy>📋 Copiar IP</button>
+        <a class="btn" data-link="discord">💬 Unirme al Discord</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer><div class="wrap"><span>© UnityCraft</span><span>Proyecto de fans. No afiliado a Mojang ni a Microsoft.</span><a href="tutoriales.html">Tutoriales</a></div></footer>
+<footer>
+  <div class="wrap">
+    <span>© UnityCraft Network</span>
+    <span>Proyecto de fans. No afiliado a Mojang ni a Microsoft.</span>
+    <div class="footer-links">
+      <a href="tutoriales.html">Tutoriales</a>
+      <a href="proteccion.html">Protecciones</a>
+      <a href="habilidades.html">Habilidades</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL NATIVO (<dialog>): VINCULACIÓN DE CUENTA MINECRAFT -->
+<dialog id="modal-vincular" class="mc-modal" aria-labelledby="modal-vincular-title">
+  <h3 id="modal-vincular-title">🔗 VINCULAR CUENTA DE MINECRAFT</h3>
+  <p>Entra a <strong>UnityCraft</strong> desde Java o Bedrock, inicia sesión y ejecuta este código único de verificación en el chat del servidor:</p>
+  <div class="ip" style="margin-bottom: 1.25rem">
+    <code id="otp-cmd">/vincular UC-7X9K</code>
+    <button type="button" class="btn emerald" data-copy-cmd="otp-cmd">📋 Copiar Comando</button>
+  </div>
+  <div style="display:flex;gap:0.75rem;justify-content:flex-end;flex-wrap:wrap">
+    <button type="button" class="btn" data-regen-otp>🔄 Generar nuevo código</button>
+    <button type="button" class="btn go" data-close-modal>Listo</button>
+  </div>
+</dialog>
+
+<!-- TOAST NOTIFICATION ESTILO "¡LOGRO DESBLOQUEADO!" -->
+<aside id="mc-toast" class="mc-toast" role="status" aria-live="polite">
+  <div class="mc-toast-icon" aria-hidden="true">🏆</div>
+  <div>
+    <strong class="mc-toast-title" id="mc-toast-title">¡Logro Desbloqueado!</strong>
+    <span class="mc-toast-desc" id="mc-toast-desc">IP copiada al portapapeles</span>
+  </div>
+</aside>
+
 <script src="config.js"></script>
 <script src="landing.js"></script>
 </body>

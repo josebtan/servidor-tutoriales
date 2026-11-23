@@ -1,1 +1,101 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Tutoriales del servidor</title><link rel="stylesheet" href="style.css"></head><body><main><nav><a href="index.html">← Inicio</a></nav><h1>⛏️ Tutoriales del servidor</h1><p class="sub">Todo lo que necesitas para sobrevivir y proteger tu casa.</p><a class="tile card" href="proteccion.html"><b>🛡️ Protecciones</b><span>Claims, explosiones, bloques, permisos y subdivisiones. Con nivel básico y avanzado.</span></a><a class="tile card" href="habilidades.html"><b>⚔️ Habilidades y trabajos</b><span>XP, estadísticas, poderes de maná, trabajos y cómo ganar dinero.</span></a><p class="sub">Más tutoriales próximamente.</p></main></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tutoriales · UnityCraft Servidor de Minecraft</title>
+<meta name="description" content="Guías interactivas de UnityCraft: aprende a proteger tu casa con GriefPrevention y a subir habilidades, maná y trabajos con AuraSkills.">
+<meta name="theme-color" content="#090e0b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%238b5a2b'/%3E%3Crect width='8' height='3' fill='%236fbf4a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="prog" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="index.html" aria-label="UnityCraft Inicio">⛏️ UNITYCRAFT</a>
+    <nav id="menu" aria-label="Principal">
+      <ul id="menu-list">
+        <li><a href="index.html#modalidades">Modalidades</a></li>
+        <li><a href="tutoriales.html" aria-current="page">Tutoriales</a></li>
+        <li><a href="tienda.html">Tienda</a></li>
+        <li><a href="perfil.html">Mi Perfil</a></li>
+      </ul>
+    </nav>
+    <div class="player-hud">
+      <img class="player-avatar" src="https://mc-heads.net/avatar/MHF_Steve/32" width="26" height="26" alt="Avatar Minecraft" decoding="async">
+      <span class="player-tokens" data-user-tokens>🪙 1,250</span>
+      <button type="button" class="btn-hud" data-open-modal="modal-vincular">Vincular MC</button>
+    </div>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">☰</button>
+  </div>
+</header>
+
+<main class="tut-main">
+  <nav class="tut-breadcrumb" aria-label="Ruta de navegación">
+    <a href="index.html">🏠 Inicio</a>
+    <span>/</span>
+    <span>Tutoriales</span>
+  </nav>
+
+  <h1>⛏️ TUTORIALES DEL SERVIDOR</h1>
+  <p class="sub">Guías paso a paso con diagramas animados y comandos copiables en un clic para sobrevivir, proteger tu base y ganar dinero.</p>
+
+  <a class="tile card" href="proteccion.html" style="--ac:#5be368">
+    <div class="ico" aria-hidden="true">🛡️</div>
+    <b>PROTECCIONES (GRIEFPREVENTION)</b>
+    <span>Claims automáticos con cofre, pala dorada, explosiones, bloques por hora, permisos (/trust) y subdivisiones. Con nivel Básico y Avanzado.</span>
+  </a>
+
+  <a class="tile card" href="habilidades.html" style="--ac:#ffc83d">
+    <div class="ico" aria-hidden="true">⚔️</div>
+    <b>HABILIDADES Y TRABAJOS (AURASKILLS)</b>
+    <span>Cómo ganar XP, subir las 6 estadísticas permanentes, activar poderes especiales de maná y elegir trabajos para ganar dinero.</span>
+  </a>
+
+  <div class="tip">
+    💡 <b>Tip Gamer:</b> En cualquiera de las guías puedes hacer clic sobre un comando (como <code>/skills</code> o <code>/claimslist</code>) para copiarlo al instante a tu portapapeles.
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© UnityCraft Network</span>
+    <span>Proyecto de fans. No afiliado a Mojang ni a Microsoft.</span>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="proteccion.html">Protecciones</a>
+      <a href="habilidades.html">Habilidades</a>
+    </div>
+  </div>
+</footer>
+
+<dialog id="modal-vincular" class="mc-modal" aria-labelledby="modal-vincular-title">
+  <h3 id="modal-vincular-title">🔗 VINCULAR CUENTA DE MINECRAFT</h3>
+  <p>Entra a <strong>UnityCraft</strong> desde Java o Bedrock y escribe este comando único en el chat del servidor:</p>
+  <div class="ip" style="margin-bottom: 1.25rem">
+    <code id="otp-cmd">/vincular UC-7X9K</code>
+    <button type="button" class="btn emerald" data-copy-cmd="otp-cmd">📋 Copiar Comando</button>
+  </div>
+  <div style="display:flex;gap:0.75rem;justify-content:flex-end;flex-wrap:wrap">
+    <button type="button" class="btn" data-regen-otp>🔄 Generar nuevo código</button>
+    <button type="button" class="btn go" data-close-modal>Listo</button>
+  </div>
+</dialog>
+
+<aside id="mc-toast" class="mc-toast" role="status" aria-live="polite">
+  <div class="mc-toast-icon" aria-hidden="true">🏆</div>
+  <div>
+    <strong class="mc-toast-title" id="mc-toast-title">¡Logro Desbloqueado!</strong>
+    <span class="mc-toast-desc" id="mc-toast-desc">Comando copiado</span>
+  </div>
+</aside>
+
+<script src="config.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
